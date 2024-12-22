@@ -7,7 +7,9 @@ Questa guida ti aiuterà a configurare e utilizzare il sito dei punti. Si presum
 
 ## 1. Clonare la repository e installare le librerie
 
-Dopo aver clonato la repository, è necessario installare le librerie richieste. Si consiglia di utilizzare un ambiente virtuale Python per una gestione più pulita delle dipendenze. Tuttavia, se non sai cosa sia un ambiente virtuale o preferisci evitare complicazioni, puoi installare le librerie globalmente. Segui i passaggi qui sotto:
+Dopo aver clonato la repository, è necessario installare le librerie richieste. Si consiglia di utilizzare un ambiente virtuale Python per una gestione più pulita delle dipendenze. Tuttavia, se non sai cosa sia un ambiente virtuale o preferisci evitare complicazioni, puoi installare le librerie globalmente.
+QUESTI PASSAGGI SONO TESTATI SOLO PER LA VERSIONE DI PYTHON 3.11.4,VERSIONI SUCCESSIVE NON SONO GARANTITE DI FUNZIONARE
+Segui i passaggi qui sotto:
 
 - **Per configurare un ambiente virtuale:** Le librerie sono elencate nel file `requirements.txt`. Puoi configurare un ambiente virtuale e installarle con i seguenti comandi:
   ```bash
