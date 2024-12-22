@@ -1,34 +1,83 @@
-# Come usare il sito dei punti
-*premessa : questa guida e la documentazione in generale da per scontato che tu sia almeno un po' familia refamiliare con i concetti comuni di git/github python e database *
+# Guida all'uso del sito dei punti
 
-# 1 : Clone della repo e installazione delle librerie
+## Introduzione
+Questa guida ti aiuterà a configurare e utilizzare il sito dei punti. Si presume che tu abbia familiarità con Git/GitHub, Python e i database. Se non conosci questi strumenti, ti consigliamo di acquisire una conoscenza di base prima di procedere.
 
-Per prima cosa dopo aver clonato la repositoria avrai bisogno di installare le librerie necessarie.Se vuoi usare un ambiene virtuale python,la librerie sono segnate nel file requirements.txt,altrimenti,se non sai cosa e' un ambiente virtuale o vuoi installare le librerie in ambiente globale,puoi usare i 2 script per l'installazione automatica:
-- Se sei su Windows runna il file [setup.bat](../../setup.bat)
-- Se sei su Macos o Linux runna il file [setup.sh](../../setup.sh)
+---
 
-Con questa installazione automatica non ci dovrebbero essere problemi,ma se ne riscontri ti consigliamo di controllare la versione di Werkzeug (che dovrebbe essere 2.2.2) visto che abbiamo riscontrato dei problemi in alcune installazioni
+## 1. Clonare la repository e installare le librerie
 
-# 1.5 : Impostare una secret key
+Dopo aver clonato la repository, è necessario installare le librerie richieste. Si consiglia di utilizzare un ambiente virtuale Python per una gestione più pulita delle dipendenze. Tuttavia, se non sai cosa sia un ambiente virtuale o preferisci evitare complicazioni, puoi installare le librerie globalmente. Segui i passaggi qui sotto:
 
-Se non se troppo preoccupato della criptazione dei dati passati nell'applicazione allora puoi anche saltare questo passaggio,altrimenti,puoi modificare il token che si occupa della criptazione in questo file : [secret_token.txt]( ../../secrets/secret_token.txt).Puoi cambiarlo ad un valore arbitrario o randomico che ritieni opportuno
-# 2 : Impostare le credenziali di default
+- **Per configurare un ambiente virtuale:** Le librerie sono elencate nel file `requirements.txt`. Puoi configurare un ambiente virtuale e installarle con i seguenti comandi:
+  ```bash
+  python3 -m venv env
+  source env/bin/activate  # Per macOS/Linux
+  .\env\Scripts\activate  # Per Windows
+  pip install -r requirements.txt
+  ```
 
-L'unico modo per accedere alla pagina admin è un account admin,e per creare un account admin avrai prima bisogno di un account admin.Per questo collegandosi alla pagina /init_starter_admin è possibile creare un account admin con email s-admin.starter@isiskeynes.it e una password che dovrai impostare nel file [secret_starter_admin_password.txt](../../secrets/secret_starter_admin_password.txt).Se lasci vuota la password non potrai creare l'account.
-Una volta create questo account volendo puoi anche cancellare il file secret_starter_admin_password se hai paura che qualcuno la possa vedere
+- **Per installazione globale:** Usa uno dei due script inclusi nella repository:
+  - **Windows:** Esegui il file [setup.bat](../../setup.bat).
+  - **macOS/Linux:** Esegui il file [setup.sh](../../setup.sh).
 
-# 3 : Finalmente si entra
+Se riscontri problemi, controlla la versione di `Werkzeug`, che dovrebbe essere `2.2.2`. Versioni non compatibili possono causare errori.
 
-Adesso puoi loggarti all'interno del sito con quel'account e accedere alla pagina admin dove potrari caricare file excel e modificare punti.
+---
 
+## 1.5. Configurare una secret key
 
+La secret key è utilizzata per la crittografia dei dati trasmessi. Se stai solo sperimentando o testando l'applicazione, puoi saltare questo passaggio. Altrimenti, procedi così:
 
+1. Apri il file [secret_token.txt](../../secrets/secret_token.txt).
+2. Inserisci un valore casuale o generato tramite un tool di creazione token sicuri.
 
-# Altre cose importanti
+---
 
-Se vuoi modificare punti o creare nuovi account che non siano admin,avrai bisogno di caricare un file excel secondo [questo](./formato_excel.md) formato così da creare un database iniziale con dei dati 
-In futuro saranno resi disponibili dei file di esempio per il database e file excel per semplificare il processo di testing
+## 2. Avviare il sito
 
+Per avviare il sito, esegui il seguente comando nella directory principale della repository:
+```bash
+python3 main.py
+```
 
+Questo comando avvierà il server locale. Ora puoi accedere alle pagine pubbliche del sito tramite il browser. Per accedere alle funzionalità riservate, come la gestione dei punti, è necessario configurare un account amministratore.
+
+---
+
+## 2.5. Configurare le credenziali di default
+
+Per accedere alla pagina **admin**, è necessario un account amministratore. Segui questi passaggi per configurarne uno:
+
+1. Accedi alla pagina `/init_starter_admin` nel tuo browser.
+2. Modifica il file [secret_starter_admin_password.txt](../../secrets/secret_starter_admin_password.txt) per impostare una password.
+   - **Nota:** Se il campo password è vuoto, non sarà possibile creare l'account.
+3. L'operazione creerà un account con email `s-admin.starter@isiskeynes.it`.
+
+**Importante:** Dopo la creazione dell'account, il file `secret_starter_admin_password` verrà eliminato automaticamente. Assicurati di ricordare la password a meno che tu non voglia reimpostare il database.
+
+---
+
+## 3. Accesso e utilizzo delle funzionalità admin
+
+Ora puoi accedere al sito con l'account amministratore appena creato. Dopo il login, avrai accesso alla pagina **admin**, dove potrai:
+
+- Caricare file Excel per aggiornare i dati.
+- Modificare i punti degli utenti.
+- Visualizzare i punti di tutti gli utenti.
+
+---
+
+## Altre informazioni importanti
+
+### Gestione dei punti e creazione di nuovi account
+
+Per modificare i punti o aggiungere nuovi account non amministrativi, è necessario caricare un file Excel formattato correttamente. Consulta il [formato specifico](./formato_excel.md) per verificare che il file sia compatibile.
+
+### Risorse future
+
+Saranno resi disponibili:
+- File di esempio per il database.
+- Modelli Excel precompilati per facilitare il testing e l'importazione dei dati.
 
 
